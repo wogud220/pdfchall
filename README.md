@@ -6,5 +6,5 @@ DP relation:
 	dp[i] = dp[i-j] for j in numbers in the input list
   
   
-1B. I used a very simple method of changing integers to alphabets. I matched up each digits from 0 - 9 to a - j, and translated the digits to alphabet. This simple approach was very easy to read and will bring out unique alphabet patterns. 
+1B. I used a very simple method of changing integers to alphabets. I matched up each digits from 0 - 9 to a - j, and translated the digits to alphabet. This simple approach was very easy to read and will bring out unique alphabet patterns for each different digit patterns. I am currently forming another idea to make the transition more unique.  
 I have attached the screenshots from the java GUI. 
