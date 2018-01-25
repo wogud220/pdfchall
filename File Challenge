@@ -3,8 +3,8 @@ b) Write pseudo-code for your algorithm.
 c) What are the pros and cons to your approach?  What computational limitations might force you to do something differently, and what would that be?  
 
 
-a) You can use a data structure hashmap to store all the unique identifiers as key and the names in value for File 1. Then you can parse through file 2 and if the identifier 
-in file 2 already exist in the hashmap, you can get the value of that and corresponding names from File 2 and add it to the result file. 
+a) You can use a data structure hashmap to store all the unique identifiers as key and the names in value for File 1. Then you can traverse through the file 2's identifier one by one and if 
+the identifier in file 2 already exist in the hashmap, it means that it exist in both of the files. So you can get the value of the corresponding names from hashmap and from File 2 and add it to the result file. 
 
 b) result = []
    hash_map = {}
@@ -15,7 +15,8 @@ b) result = []
  			result.include(identifier, identifier's name(value in hash_map), file2's corresponding identifier's name)
    return result
 
-c) The pros of this approach is that with the hashmap, looking for a certain unique identifier becomes constant time O(1) as you can just look for the key. 
+c) The pros of this approach is that with the hashmap, looking for a certain unique identifier becomes constant time O(1) in file1 as you can just look for the key. If you also form hashmap for file2, 
+then looking for unique identifier in both files become constant time. 
 However, this approach may cause problem if the data becomes larger and eventually, the hashmap itself takes too much of the memory. To solve this, you can sort the File1, and 
 File 2 alphabetically by the unique identifiers name, and by just using two pointer, each from beginning of the two files, traverse, and see if there are any common identifiers. 
 This approach won't take any memory but we will not be able to find if a certain identifier exist in File1 in constant time but rather linear time. If the size of two files contrast greatly,
