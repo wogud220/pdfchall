@@ -18,6 +18,7 @@ b) result = []
 c) The pros of this approach is that with the hashmap, looking for a certain unique identifier becomes constant time O(1) as you can just look for the key. 
 However, this approach may cause problem if the data becomes larger and eventually, the hashmap itself takes too much of the memory. To solve this, you can sort the File1, and 
 File 2 alphabetically by the unique identifiers name, and by just using two pointer, each from beginning of the two files, traverse, and see if there are any common identifiers. 
-This approach won't take any memory but we will not be able to find if a certain identifier exist in File1 in constant time but rather linear time.
+This approach won't take any memory but we will not be able to find if a certain identifier exist in File1 in constant time but rather linear time. If the size of two files contrast greatly,
+we can use binary search to go through smaller file one by one, and use binary search on the larger file to search if there is corresponding identifier on the larger file. 
 
 
