@@ -12,7 +12,8 @@ import java.awt.event.ActionEvent;
 
 public class Number2String extends JFrame {
 	/**
-	 * 
+	 * The big idea is to relate the numbers to the user. When the user types in a number, we break it into three long substrings,
+	 and ask questions based on those numbers and try to relate the numbers to the users and try help them to visualize the numbers.
 	 */
 	private static final long serialVersionUID = 1L;
 	//variable to keep index of the string number from user input
