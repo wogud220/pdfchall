@@ -4,46 +4,56 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextField;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 import javax.swing.JLabel;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Iterator;
-import java.util.Set;
-public class Digit2Alpha extends JFrame {
-	
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Number2String extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//variable to keep index of the string number from user input
+	public int num = 0;
+	//Initial string of user input
+	public String number = "";
 	private JPanel contentPane;
 	private final JPanel panel = new JPanel();
-	private final JPanel panel_1 = new JPanel();
-	//Text field for number inputs
+	//Button for storing the user input number
+	private final JButton btnNewButton = new JButton("Enter the number");
+	//Display for the questions
 	private final JTextField textField = new JTextField();
-	//Button to create alphabet version
-	private final JButton btnNewButton = new JButton("Change to alphabet");
-	//Displayer for the alphabets
-	private final JLabel lblNewLabel = new JLabel("ALPHABET");
+	//Display for the answers
+	private final JTextField textField_1 = new JTextField();
 	
-	
-	//Takes in an integer, and gives back corresponding alphabet
-	private String getCharForNumber(int i) {
-	    return i > -1 && i < 26 ? String.valueOf((char)(i + 65)) : null;
-	}
+	private final JLabel lblNewLabel = new JLabel("Answer me");
+	private final JLabel label = new JLabel("");
+	//Questionnaire
+	private final JButton btnNewButton_1 = new JButton("Press for question");
+	String [] arr = {"What do you want to buy with $", "What college course is ", "Who is most likely to live in the street ",
+			"Who is likely to have last digit of phone number as ","What cost $","Who would you pay $","Who lives in room #","Who do you think has a license plate number including ",
+			"Who is most likely to have this many children"};
+	//index for the questions
+	public int index = 0;
+  
 
+	
+	
+	
+	
+	
+	
 
 	/**
 	 * Launch the application.
 	 */
-	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Digit2Alpha frame = new Digit2Alpha();
+					Number2String frame = new Number2String();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,8 +65,9 @@ public class Digit2Alpha extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Digit2Alpha() {
-		textField.setColumns(10);
+	public Number2String() {
+		textField_1.setColumns(10);
+		textField.setColumns(20);
 		initGUI();
 	}
 	private void initGUI() {
@@ -68,29 +79,37 @@ public class Digit2Alpha extends JFrame {
 		setContentPane(contentPane);
 		
 		contentPane.add(panel, BorderLayout.CENTER);
-		
-		panel.add(lblNewLabel);
-		
-		contentPane.add(panel_1, BorderLayout.NORTH);
-		
-		panel_1.add(textField);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String digit = textField.getText();
-				ArrayList<Integer> lst = new ArrayList<Integer>();
-				for (String field : digit.split(""))
-				    lst.add(Integer.parseInt(field));
-				String res = "";
-				for (int x:lst) 
-					res = res + getCharForNumber(x);
-					
-
-				lblNewLabel.setText(res);
+				number = textField.getText();
 			}
 		});
 		
-		panel_1.add(btnNewButton);
+		panel.add(textField);
+		
+		panel.add(btnNewButton);
+		
+		panel.add(lblNewLabel);
+		
+		panel.add(textField_1);
+		//Adding the new question on to the view side, and getting the user input answer and storing it in the label.
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (num+3 <= number.length()) {
+				lblNewLabel.setText(arr[index] + number.substring(num, num+3));
+				num = num + 3;
+				index = index + 1;
+				label.setText(label.getText() + " " + textField_1.getText());
+				} else {
+					lblNewLabel.setText(arr[index] + number.substring(num));
+					label.setText(label.getText() + " " + textField_1.getText());
+				}
+			}
+		});
+		
+		panel.add(btnNewButton_1);
+		
+		contentPane.add(label, BorderLayout.SOUTH);
 	}
 
 }
-
